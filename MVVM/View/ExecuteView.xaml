@@ -7,6 +7,9 @@
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
      >
+    <UserControl.Resources>
+        <local:BooleanToVisibilityConverter x:Key="boolToVisConverter"/>
+    </UserControl.Resources>
 
     <Grid>
         <TextBlock Text="Please choose a backup to execute :"
@@ -14,10 +17,24 @@
                    Foreground="White"
                    FontSize="28"/>
         <StackPanel x:Name="listWorks" Margin="0,50,0,0">
+            <ItemsControl ItemsSource="{Binding Works}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{Binding sName}" FontSize="20" VerticalAlignment="Center"/>
+                            <Button Grid.Column="1" Content="Execute" Command="{Binding DataContext.ExecuteCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding sName}" Margin="5"/>
+                            <Button Grid.Column="1" Content="Stop" Command="{Binding DataContext.StopCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding sName}" Margin="5" Visibility="{Binding IsStopped, Converter={StaticResource boolToVisibilityConverter}}"/>
+                            <Button Grid.Column="1" Content="Pause" Command="{Binding DataContext.PauseCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding sName}" Margin="5" Visibility="{Binding IsNotStopped, Converter={StaticResource boolToVisibilityConverter}}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
         <ProgressBar x:Name="ProgressBarrStatus" HorizontalAlignment="Left" Height="51" Margin="382,378,0,0" VerticalAlignment="Top" Width="379"/>
         <Label x:Name="lb_etat_prog_server" Content="" HorizontalAlignment="Left" Margin="216,378,0,0" VerticalAlignment="Top" Height="58" Width="108" FontSize="24"/>
-
-
     </Grid>
 </UserControl>

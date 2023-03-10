@@ -13,6 +13,7 @@ namespace EasySave.MVVM.ViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public List<Work> _works;
+        private Transfer _transfer;
 
         public List<Work> Works
         {
@@ -34,7 +35,7 @@ namespace EasySave.MVVM.ViewModel
             Work work = _works[index];
             try
             {
-                new Transfer(work);
+                _transfer = new Transfer(work);
             }
             catch (Exception ex)
             {
@@ -42,28 +43,20 @@ namespace EasySave.MVVM.ViewModel
             }
 
         }
+
         public void Stop(int index)
         {
-            Work work = _works[index];
-            try
+            if (_transfer != null)
             {
-                new Transfer(work).Stop();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                _transfer.Stop();
             }
         }
+
         public void Resume(int index)
         {
-            Work work = _works[index];
-            try
+            if (_transfer != null)
             {
-                new Transfer(work).Resume();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                _transfer.Resume();
             }
         }
         public void Pause(int index)
@@ -79,5 +72,10 @@ namespace EasySave.MVVM.ViewModel
             }
         }
 
+
+        public bool IsTransferRunning()
+        {
+            return _transfer != null;
+        }
     }
 }
