@@ -166,7 +166,7 @@ namespace EasySave.MVVM.View
             BackgroundWorker worker = sender as BackgroundWorker;
             int numberOfTasks = exec.Works.Count;
 
-            for (int i = 0; i < numberOfTasks; i++)
+            foreach (var work in exec.Works)
             {
                 if (worker.CancellationPending)
                 {
@@ -174,13 +174,38 @@ namespace EasySave.MVVM.View
                     return;
                 }
 
-                int taskIndex = i; // Stocke l'index de la tâche en cours d'exécution
+                work.IsRunning = true;
+                int taskIndex = exec.Works.IndexOf(work); // Stocke l'index de la tâche en cours d'exécution
+
+                // Mettre à jour l'affichage du bouton Pause et Stop pour la tâche en cours
+                Dispatcher.Invoke(() =>
+                {
+                    var stackPanel = (StackPanel)listWorks.Children[taskIndex];
+                    var pauseButton = (Button)stackPanel.Children[2];
+                    var stopButton = (Button)stackPanel.Children[3];
+                    pauseButton.Visibility = Visibility.Visible;
+                    stopButton.Visibility = Visibility.Visible;
+                });
 
                 exec.Execute(taskIndex); // Utilise l'index stocké pour exécuter la tâche
-                int progress = (i + 1) * 100 / numberOfTasks;
+                work.IsRunning = false;
+
+                // Mettre à jour la barre de progression dans le thread principal
+                int progress = (exec.Works.IndexOf(work) + 1) * 100 / numberOfTasks;
                 worker.ReportProgress(progress);
+
+                // Mettre à jour l'affichage du bouton Pause et Stop pour la tâche terminée
+                Dispatcher.Invoke(() =>
+                {
+                    var stackPanel = (StackPanel)listWorks.Children[taskIndex];
+                    var pauseButton = (Button)stackPanel.Children[2];
+                    var stopButton = (Button)stackPanel.Children[3];
+                    pauseButton.Visibility = Visibility.Collapsed;
+                    stopButton.Visibility = Visibility.Collapsed;
+                });
             }
         }
+
 
 
         private void ProgressChanged(object sender, ProgressChangedEventArgs e)

@@ -11,7 +11,10 @@ namespace EasySave.MVVM.Model
     {
 
         public string sName, sSource, sTarget, sType;
+        public bool IsRunning { get; set; } = false;
+
         public List<string> Tasks { get; set; }
+
         public Work(string name, string source, string target, string type)
         {
             sName = name;
