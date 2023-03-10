@@ -1,0 +1,118 @@
+﻿<Window x:Class="EasySave.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:viewModel="clr-namespace:EasySave.MVVM.ViewModel"
+        Height="600" Width="900"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True">
+
+
+    <Border Background="Transparent">
+
+
+        <!-- Ajouter une grille (Grid) comme élément racine -->
+        <Grid x:Name="maGrille">
+            <Grid.Background>
+                <ImageBrush ImageSource="Images/EasySave.png"/>
+
+            </Grid.Background>
+
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="167*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Margin="0,0,0,0" Grid.Row="1" Grid.RowSpan="2">
+
+                <RadioButton Name="HomeRadioButton"
+                             Content="Home"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             IsChecked="True"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HomeViewCommand}" Width="244" Checked="HomeRadioButton_Checked"/>
+
+                <RadioButton Name="CreateBackupRadioButton"
+                             Content="Create a backup"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding DiscoveryViewCommand}"/>
+
+                <RadioButton Name="ExecuteBackupRadioButton"
+                             Content="Execute a backup"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ExecuteViewCommand}"/>
+
+                <RadioButton Name="ModifyBackupRadioButton"
+                             Content="Modify a backup"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding ModifyViewCommand}"/>
+
+                <RadioButton Name="FrenchRadioButton"
+                             Content="Français"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             Click="French_Click"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HomeViewCommand}"/>
+
+                <RadioButton Name="EnglishRadioButton"
+                             Content="English"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             Click="English_Click"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding HomeViewCommand}"/>
+                <RadioButton Name="SettingsRadioButton"
+                             Content="Settings"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             Click="Settings_Click"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding SettingsViewCommand}"/>
+
+                <RadioButton Name="ExitRadioButton"
+                             Content="Exit"
+                             Height="50"
+                             Foreground="White"
+                             FontSize="17"
+                             Style="{StaticResource MenuButtonTheme}"
+                             Click="Radio_Exit"
+                             />
+
+            </StackPanel>
+
+            <ContentControl x:Name="ContentDisplay"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10,10,10,10"
+                            Content="{Binding CurrentView}" Grid.RowSpan="2"/>
+
+
+
+        </Grid>
+
+
+    </Border>
+
+</Window>

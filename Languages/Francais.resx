@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="EasySave" xml:space="preserve">
+    <value>Bienvenue chez EasySave !</value>
+  </data>
+  <data name="InvalidOption" xml:space="preserve">
+    <value>Option invalide.</value>
+  </data>
+  <data name="InvalidIndex" xml:space="preserve">
+    <value>Index invalide.</value>
+  </data>
+  <data name="PleaseChooseAction" xml:space="preserve">
+    <value>Veuillez selectionner une action à réaliser</value>
+  </data>
+  <data name="CreateWork" xml:space="preserve">
+    <value>Créer un travail</value>
+  </data>
+  <data name="ExecuteWork" xml:space="preserve">
+    <value>Exécuter un travail</value>
+  </data>
+  <data name="ExecuteWorks" xml:space="preserve">
+    <value>Exécuter tous les travaux séquentiellement</value>
+  </data>
+  <data name="ModifyWork" xml:space="preserve">
+    <value>Modifier un travail</value>
+  </data>
+  <data name="DeleteWork" xml:space="preserve">
+    <value>Supprimer un travail</value>
+  </data>
+  <data name="ChangeLanguage" xml:space="preserve">
+    <value>Changer la langue.</value>
+  </data>
+  <data name="ToQuit" xml:space="preserve">
+    <value>Pour quitter, tapez : q</value>
+  </data>
+  <data name="Closing" xml:space="preserve">
+    <value>Fermeture de l'application..</value>
+  </data>
+  <data name="EnterName" xml:space="preserve">
+    <value>Entrez un nom</value>
+  </data>
+  <data name="EnterSource" xml:space="preserve">
+    <value>Entrez un dossier source</value>
+  </data>
+  <data name="EnterTarget" xml:space="preserve">
+    <value>Entrez un dossier cible</value>
+  </data>
+  <data name="Entertype" xml:space="preserve">
+    <value>Entrez un type (1. Complet, 2. Differentiel)</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="SourceFolder" xml:space="preserve">
+    <value>Dossier source</value>
+  </data>
+  <data name="TargetFolder" xml:space="preserve">
+    <value>Dossier cible</value>
+  </data>
+  <data name="SaveType" xml:space="preserve">
+    <value>Type de sauvegarde</value>
+  </data>
+  <data name="PleaseSelectWork" xml:space="preserve">
+    <value>Veuillez sélectionner un travail</value>
+  </data>
+  <data name="NoWorkCreated" xml:space="preserve">
+    <value>Aucun travail n'a été créé à ce jour.</value>
+  </data>
+  <data name="CreateWorkChoosen" xml:space="preserve">
+    <value>Vous avez choisis de créer un travail.</value>
+  </data>
+  <data name="ExecuteWorkChossen" xml:space="preserve">
+    <value>Vous avez choisis d'executer un travail.</value>
+  </data>
+  <data name="DeleteWorkChosen" xml:space="preserve">
+    <value>Vous avez choisis de supprimer un travail.</value>
+  </data>
+  <data name="ExecuteWorksChosen" xml:space="preserve">
+    <value>Vous avez choisis d'executer plusieurs travaux.</value>
+  </data>
+  <data name="ModifiyingWork" xml:space="preserve">
+    <value>Modification du travail </value>
+  </data>
+  <data name="TypeNewName" xml:space="preserve">
+    <value>Saisissez un nouveau nom</value>
+  </data>
+  <data name="TypeNewSource" xml:space="preserve">
+    <value>Saisissez un nouveau dossier source</value>
+  </data>
+  <data name="TypeNewTarget" xml:space="preserve">
+    <value>Saisissez un nouveau dossier cible</value>
+  </data>
+  <data name="TypeNewSaveType" xml:space="preserve">
+    <value>Saisissez un nouveau type de sauvegarde (1. Complet, 2. Differentiel)</value>
+  </data>
+  <data name="EmptyForSame" xml:space="preserve">
+    <value>(Laissez vide pour garder le même)</value>
+  </data>
+  <data name="ExecutingWork" xml:space="preserve">
+    <value>Execution en cours de</value>
+  </data>
+  <data name="ExecutingSuccess" xml:space="preserve">
+    <value>Travail executé avec succès</value>
+  </data>
+  <data name="ExecuteEnded" xml:space="preserve">
+    <value>Fin des transferts des travaux</value>
+  </data>
+  <data name="ModificationSuccess" xml:space="preserve">
+    <value>Travail modifié avec succès.</value>
+  </data>
+  <data name="DeleteSuccess" xml:space="preserve">
+    <value>Travail supprimé avec succès.</value>
+  </data>
+  <data name="success" xml:space="preserve">
+    <value>réussi(s)</value>
+  </data>
+  <data name="failed" xml:space="preserve">
+    <value>échoué(s)</value>
+  </data>
+  <data name="and" xml:space="preserve">
+    <value>et</value>
+  </data>
+  <data name="InvalidType" xml:space="preserve">
+    <value>Type invalide, veuillez modifier le travail puis réessayez.</value>
+  </data>
+  <data name="ToContinue" xml:space="preserve">
+    <value>Appuyez sur une touche pour continuer</value>
+  </data>
+  <data name="TooMuchWorks" xml:space="preserve">
+    <value>Le nombre limite de travaux créés a été atteint</value>
+  </data>
+  <data name="LanguageChanged" xml:space="preserve">
+    <value>La langue a été changée.</value>
+  </data>
+  <data name="SourceNotExists" xml:space="preserve">
+    <value>Le dossier source n'existe pas</value>
+  </data>
+  <data name="Exit" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Accueil</value>
+  </data>
+  <data name="Create a backup" xml:space="preserve">
+    <value>Créer une sauvegarde</value>
+  </data>
+  <data name="Execute a backup" xml:space="preserve">
+    <value>Exécuter une sauvegarde</value>
+  </data>
+  <data name="Modify a backup" xml:space="preserve">
+    <value>Modifier une sauvegarde</value>
+  </data>
+  <data name="Français" xml:space="preserve">
+    <value>Français</value>
+  </data>
+  <data name="Englisht" xml:space="preserve">
+    <value>Anglais</value>
+  </data>
+  <data name="Welcome on Easysave" xml:space="preserve">
+    <value>Bienvenue sur Easysave</value>
+  </data>
+  <data name="Get started today" xml:space="preserve">
+    <value>Commencez dès aujourd'hui</value>
+  </data>
+  <data name="Your precedent backup :" xml:space="preserve">
+    <value>Vos sauvegardes précédentes :</value>
+  </data>
+  <data name="Please complete the informations below :" xml:space="preserve">
+    <value>Veuillez compléter les informations ci-dessous :</value>
+  </data>
+  <data name="Enter a name :" xml:space="preserve">
+    <value>Entrez un nom :</value>
+  </data>
+  <data name="Enter a file source :" xml:space="preserve">
+    <value>Entrez un répertoire source :</value>
+  </data>
+  <data name="Enter a file target :" xml:space="preserve">
+    <value>Entrez un répertoire de destination :</value>
+  </data>
+  <data name="Choose a type of save :" xml:space="preserve">
+    <value>Choisissez un type de sauvegarde :</value>
+  </data>
+  <data name="Complete" xml:space="preserve">
+    <value>Complète</value>
+  </data>
+  <data name="Differential" xml:space="preserve">
+    <value>Différentielle</value>
+  </data>
+  <data name="Please choose a backup to execute :" xml:space="preserve">
+    <value>Veuillez choisir une sauvegarde à exécuter :</value>
+  </data>
+  <data name="Please choose a backup to modify :" xml:space="preserve">
+    <value>Veuillez choisir une sauvegarde à modifier :</value>
+  </data>
+  <data name="Search" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
+</root>

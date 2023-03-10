@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="EasySave.MVVM.View.SettingsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:EasySave.MVVM.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="500" d:DesignWidth="800"
+    >
+    <Grid x:Name="settingsMainGrid" Width="700" Height="505">
+        <Border Background="Transparent" Height="450" VerticalAlignment="Top" Width="700" BorderThickness="1" BorderBrush="white"/>
+        <Grid x:Name="blockedProcessesGrid" Height="450" VerticalAlignment="Top">
+            <Label x:Name="blockedProcessesLabel" Content="List of extensions of files to encrypt :" Margin="0,155,402,0" HorizontalAlignment="Right" Width="218" Height="26" VerticalAlignment="Top" Foreground="White"/>
+            <ListBox x:Name="blockedProcessesListBox" Margin="80,0,0,0" Height="80" VerticalAlignment="Center" HorizontalAlignment="Left" Width="220" Background="Transparent"
+                          BorderBrush="Gray"
+                          Foreground="White"/>
+            <Label x:Name="blockedProcessesTextBoxLabel" Content="Name of the extension  :" Margin="82,39,474,380" Foreground="White" RenderTransformOrigin="0.966,-5.428"/>
+            <TextBox x:Name="blockedProcessesTextBox"  TextWrapping="Wrap" Text="" Margin="0,75,400,0" Width="221" HorizontalAlignment="Right" Height="20" VerticalAlignment="Top" Background="Transparent"
+                          BorderBrush="Gray"
+                          Foreground="White"/>
+            <Button x:Name="blockedProcessesAddButton" Content="Add" Margin="79,119,521,0" Height="20" Width="50" VerticalAlignment="Top" Click="blockedProcessesAddButton_Click" Background="Green"
+                        Foreground="White" RenderTransformOrigin="1.262,0.522"/>
+            <Button x:Name="blockedProcessesDeleteButton" Content="Delete" Margin="0,119,459,0" Width="50" Height="20" VerticalAlignment="Top" HorizontalAlignment="Right" Click="blockedProcessesDeleteButton_Click" Background="Red"
+                        Foreground="White" RenderTransformOrigin="2.176,1.055"/>
+            <Label x:Name="errorBlockedProcessesLabel" Visibility="Hidden" Content="" Margin="24,43,466,264" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White"/>
+        </Grid>
+
+        <Grid x:Name="encryptedExtensionsGrid">
+            <Label x:Name="encryptedExtensionsLabel" Content="List of processes to block :" Margin="406,147,0,0" Height="28" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Foreground="White"/>
+            <ListBox x:Name="encryptedExtensionsListBox" Margin="413,180,59,242" Background="Transparent"
+                          BorderBrush="Gray"
+                          Foreground="White"/>
+            <Label x:Name="encryptedExtensionTextBoxLabe" Content="Name of the process to block :" Margin="413,43,87,426" Foreground="White" RenderTransformOrigin="1.159,0.613"/>
+            <TextBox x:Name="encryptedExtensionsTextBox"  TextWrapping="Wrap" Margin="413,79,59,0" Height="20" VerticalAlignment="Top" Background="Transparent"
+                          BorderBrush="Gray"
+                          Foreground="White"/>
+            <Button x:Name="encryptedExtensionsAddButton" Content="Add" Margin="413,123,187,0" Height="20" VerticalAlignment="Top" Width="50" Click="encryptedExtensionsAddButton_Click" Background="Green"
+                        Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+            <Button x:Name="encryptedExtensionsDeleteButton" Content="Delete" Margin="544,123,106,0" Width="50" Height="20" VerticalAlignment="Top" Click="encryptedExtensionsDeleteButton_Click" Background="Red"
+                        Foreground="White" RenderTransformOrigin="0.452,2.231"/>
+            <Label x:Name="errorEncryptedExtensionsLabel" Visibility="Hidden" Content="" Margin="28,288,462,74" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Foreground="White"/>
+        </Grid>
+        <Grid x:Name="logFileMethod" Margin="0,408,0,55">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="141*"/>
+                <ColumnDefinition Width="34*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="logFileMethodStackPanel" Margin="205,0,0,0" HorizontalAlignment="Left" Width="466" VerticalAlignment="Center" Orientation="Horizontal" Grid.ColumnSpan="2"/>
+
+        </Grid>
+
+
+
+    </Grid>
+
+</UserControl>

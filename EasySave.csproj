@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>True</UseWindowsForms>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="NewFolder\**" />
+    <EmbeddedResource Remove="NewFolder\**" />
+    <None Remove="NewFolder\**" />
+    <Page Remove="NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Images\create_button.png" />
+    <None Remove="Images\EasySave.png" />
+    <None Remove="Images\sauvegarde.png" />
+    <None Remove="Logs\JSON\Extensions.json" />
+    <None Remove="Logs\JSON\Process.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Theme\EnterText.xaml" />
+    <Page Remove="Theme\MenuButtonTheme.xaml" />
+    <Page Remove="Theme\TextboxTheme.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\create_button.png" />
+    <Resource Include="Images\EasySave.png" />
+    <Resource Include="Images\sauvegarde.png" />
+    <Resource Include="Logs\JSON\Process.json" />
+    <Resource Include="Logs\JSON\Extensions.json" />
+    <Resource Include="Theme\EnterText.xaml" />
+    <Resource Include="Theme\MenuButtonTheme.xaml" />
+    <Resource Include="Theme\TextboxTheme.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Languages\English.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>English.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Languages\Francais.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Francais.resx</DependentUpon>
+    </Compile>
+    <Compile Update="MVVM\View\SettingsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Languages\English.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>English.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Languages\Francais.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Francais.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
