@@ -63,7 +63,7 @@
                              Foreground="White"
                              FontSize="17"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ModifyViewCommand}"/>
+                             Command="{Binding ModifyViewCommand}" Checked="ModifyBackupRadioButton_Checked"/>
 
                 <RadioButton Name="FrenchRadioButton"
                              Content="Français"

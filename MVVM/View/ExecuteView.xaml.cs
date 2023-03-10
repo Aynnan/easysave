@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace EasySave.MVVM.View
 {
@@ -54,32 +55,69 @@ namespace EasySave.MVVM.View
                 return;
             }
 
-            var listBox = new ListBox();
             foreach (var work in works)
             {
-                var newItem = new ListBoxItem()
+                var stackPanel = new StackPanel();
+
+                var textBlock = new TextBlock()
                 {
-                    Content = $"{work.sName} :\nSource :{work.sSource}\nTarget : {work.sTarget}\nType : {work.sType}",
-                    Tag = $"{listBox.Items.Count}"
+                    Text = $"{work.sName} :\nSource :{work.sSource}\nTarget : {work.sTarget}\nType : {work.sType}",
+                    Margin = new Thickness(0, 0, 10, 0)
                 };
-                newItem.PreviewMouseDoubleClick += ListBoxItem_MouseDoubleClick;
-                listBox.Items.Add(newItem);
+
+                var playButton = new Button()
+                {
+                    Content = "Play",
+                    Width = 75,
+                    Margin = new Thickness(0, 0, 10, 0),
+                    Tag = $"{listWorks.Children.Count}"
+                };
+                playButton.Click += PlayButton_Click;
+
+                var pauseButton = new Button()
+                {
+                    Content = "Pause",
+                    Width = 75,
+                    Margin = new Thickness(0, 0, 10, 0),
+                    Visibility = Visibility.Collapsed,
+                    Tag = $"{listWorks.Children.Count}"
+                };
+                pauseButton.Click += PauseButton_Click;
+
+                var stopButton = new Button()
+                {
+                    Content = "Stop",
+                    Width = 75,
+                    Margin = new Thickness(0, 0, 10, 0),
+                    Visibility = Visibility.Collapsed,
+                    Tag = $"{listWorks.Children.Count}"
+                };
+                stopButton.Click += StopButton_Click;
+
+                stackPanel.Children.Add(textBlock);
+                stackPanel.Children.Add(playButton);
+                stackPanel.Children.Add(pauseButton);
+                stackPanel.Children.Add(stopButton);
+
+                listWorks.Children.Add(stackPanel);
             }
-            listWorks.Children.Add(listBox);
         }
 
-        private void ListBoxItem_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+
+        private void PlayButton_Click(object sender, RoutedEventArgs e)
         {
-            var item = sender as ListBoxItem;
-            if (item != null)
+            var button = sender as Button;
+            if (button != null)
             {
-                string tag = item.Tag?.ToString() ?? "";
+                string tag = button.Tag?.ToString() ?? "";
                 int.TryParse(tag, out int selectedTask);
                 SelectedTask = selectedTask;
 
                 StartTasks(sender, e);
             }
         }
+       
+
 
         private async void StartTasks(object sender, RoutedEventArgs e)
         {
@@ -111,7 +149,6 @@ namespace EasySave.MVVM.View
             finally
             {
                 if (!worker.IsBusy)
-                {
                     if (worker.CancellationPending)
                     {
                         MessageBox.Show("Les tâches ont été annulées.");
@@ -120,9 +157,9 @@ namespace EasySave.MVVM.View
                     {
                         MessageBox.Show("Toutes les tâches sont terminées.");
                     }
-                }
             }
         }
+
 
         private void DoWork(object sender, DoWorkEventArgs e)
         {
@@ -173,19 +210,35 @@ namespace EasySave.MVVM.View
             }
         }
 
-        private void PauseTasksButton_Click(object sender, RoutedEventArgs e)
+
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
         {
+            var button = sender as Button;
+            var taskIndex = int.Parse(button.Tag.ToString());
+            if (isPaused)
+            {
+                exec.Resume(taskIndex);
+                worker.RunWorkerAsync();
+                isPaused = false;
+            }
+            else
+            {
+                exec.Pause(taskIndex);
+                worker.CancelAsync();
+                isPaused = true;
+            }
+        }
+
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            var button = sender as Button;
+            var taskIndex = int.Parse(button.Tag.ToString());
+            exec.Stop(taskIndex);
             worker.CancelAsync();
         }
 
-        private void StopTasksButton_Click(object sender, RoutedEventArgs e)
-        {
-            worker.CancelAsync();
-        }
 
-        private void ResumeTasksButton_Click(object sender, RoutedEventArgs e)
-        {
-            worker.RunWorkerAsync();
-        }
+
     }
 }

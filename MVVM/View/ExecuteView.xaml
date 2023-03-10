@@ -16,9 +16,8 @@
         <StackPanel x:Name="listWorks" Margin="0,50,0,0">
         </StackPanel>
         <ProgressBar x:Name="ProgressBarrStatus" HorizontalAlignment="Left" Height="51" Margin="382,378,0,0" VerticalAlignment="Top" Width="379"/>
-        
-        <TextBox HorizontalAlignment="Left" Margin="512,449,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Name="txtNumberOfTasks"/>
         <Label x:Name="lb_etat_prog_server" Content="" HorizontalAlignment="Left" Margin="216,378,0,0" VerticalAlignment="Top" Height="58" Width="108" FontSize="24"/>
+
 
     </Grid>
 </UserControl>

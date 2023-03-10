@@ -42,5 +42,42 @@ namespace EasySave.MVVM.ViewModel
             }
 
         }
+        public void Stop(int index)
+        {
+            Work work = _works[index];
+            try
+            {
+                new Transfer(work).Stop();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        public void Resume(int index)
+        {
+            Work work = _works[index];
+            try
+            {
+                new Transfer(work).Resume();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        public void Pause(int index)
+        {
+            Work work = _works[index];
+            try
+            {
+                new Transfer(work).Pause();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
     }
 }

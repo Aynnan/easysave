@@ -11,18 +11,19 @@ namespace EasySave.MVVM.Model
 {
     public class Transfer
     {
-
+        private bool _isStopped = false;
         private Work _work;
-        public Transfer(Work work) {
+        public Transfer(Work work)
+        {
             _work = work;
 
             if (!Directory.Exists(work.sSource))
                 throw new Exception(cLanguage.GetString("SourceNotExists"));
-            
-            if(!Directory.Exists(work.sTarget))
+
+            if (!Directory.Exists(work.sTarget))
                 Directory.CreateDirectory(work.sTarget);
 
-            if(work.sType == "complete")
+            if (work.sType == "complete")
             {
                 Complete(work.sSource, work.sTarget);
                 return;
@@ -38,11 +39,13 @@ namespace EasySave.MVVM.Model
 
         }
 
-        private void Complete(string source, string target) {
+        private void Complete(string source, string target)
+        {
             List<string> files = listFiles(source);
 
-            foreach (string file in files) {
-                string fileTarget = target + Path.DirectorySeparatorChar +  Path.GetFileName(file);
+            foreach (string file in files)
+            {
+                string fileTarget = target + Path.DirectorySeparatorChar + Path.GetFileName(file);
                 copyFile(file, fileTarget);
             }
 
@@ -53,11 +56,11 @@ namespace EasySave.MVVM.Model
             string fileSource;
             FileInfo fileinfo = new(file);
             List<string> exts = new Extensions().Get();
-            if(exts.Contains(fileinfo.Extension))
+            if (exts.Contains(fileinfo.Extension))
             {
                 string program = @"C:\Users\Ayman\Downloads\CryptoSoft\bin\Debug\netcoreapp3.0\CryptoSoft.exe";
-                string fileNotCrypted = Path.Combine(Path.GetDirectoryName(file) ?? "",file);
-                string fileEncrypt = Path.Combine(Path.GetDirectoryName(file) ?? "","Encrypted" + fileinfo.Name);
+                string fileNotCrypted = Path.Combine(Path.GetDirectoryName(file) ?? "", file);
+                string fileEncrypt = Path.Combine(Path.GetDirectoryName(file) ?? "", "Encrypted" + fileinfo.Name);
                 string args = $" {fileNotCrypted} {fileEncrypt}";
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = program;
@@ -66,7 +69,7 @@ namespace EasySave.MVVM.Model
                 process.StartInfo = startInfo;
                 process.Start();
                 process.WaitForExit(); // attend la fin de l'exécution du processus
-                
+
 
                 fileSource = fileEncrypt;
                 process.Kill();
@@ -82,18 +85,19 @@ namespace EasySave.MVVM.Model
 
         private void Differential(string source, string target)
         {
-            List<string> files = listFiles(source); 
-            foreach(string fileSource in files)
+            List<string> files = listFiles(source);
+            foreach (string fileSource in files)
             {
                 string fileTarget = target + Path.DirectorySeparatorChar + Path.GetFileName(source);
-                if(!File.Exists(fileTarget))
+                if (!File.Exists(fileTarget))
                 {
                     copyFile(fileSource, fileTarget);
                     continue;
                 }
                 FileInfo fileSourceInfo = new(fileSource);
                 FileInfo fileTargetInfo = new(fileTarget);
-                if(fileTargetInfo.LastWriteTime != fileSourceInfo.LastWriteTime) {
+                if (fileTargetInfo.LastWriteTime != fileSourceInfo.LastWriteTime)
+                {
                     copyFile(fileSource, fileTarget);
                 }
             }
@@ -103,12 +107,13 @@ namespace EasySave.MVVM.Model
         private List<string> listFiles(string folder)
         {
             List<string> files = new List<string>();
-            
-            foreach(string file in Directory.GetFiles(folder)) {
+
+            foreach (string file in Directory.GetFiles(folder))
+            {
                 string fileSource = fileCrypt(file);
                 files.Add(fileSource);
             }
-            foreach(string dir in Directory.GetDirectories(folder))
+            foreach (string dir in Directory.GetDirectories(folder))
             {
 
                 files.AddRange(listFiles(dir));
@@ -118,6 +123,11 @@ namespace EasySave.MVVM.Model
 
         private void copyFile(string source, string target)
         {
+            // Vérifier si l'arrêt a été demandé
+            if (_isStopped)
+            {
+                return;
+            }
             FileInfo fileinfo = new FileInfo(source);
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -166,6 +176,20 @@ namespace EasySave.MVVM.Model
                 Timestamp timestamp = new Timestamp(_work.sName, target, source, -1, fileinfo.Length);
                 new Daily(timestamp);
             }
+        }
+
+
+        public void Stop()
+        {
+            _isStopped = true;
+        }
+        public void Resume()
+        {
+            _isStopped = false;
+        }
+        public void Pause()
+        {
+            _isStopped = true;
         }
 
 
